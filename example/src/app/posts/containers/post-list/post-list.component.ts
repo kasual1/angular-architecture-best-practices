@@ -11,16 +11,13 @@ import { tap } from 'rxjs/operators';
 })
 export class PostListComponent implements OnInit {
   posts$: Observable<Post[]>;
-  posts: Post[];
   loading$: Observable<boolean>;
 
   constructor(private postsFacade: PostsFacade) {
-    this.posts$ = postsFacade
-      .getPosts$()
-      .pipe(tap((posts) => (this.posts = posts)));
+    this.posts$ = postsFacade.getPosts$();
   }
 
   ngOnInit(): void {
-    this.postsFacade.loadAllPosts();
+    this.postsFacade.loadAllPostsWithComments();
   }
 }

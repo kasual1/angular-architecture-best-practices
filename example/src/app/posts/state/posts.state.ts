@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Post } from '../models/post.model';
+import { Comment } from '../models/comment.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +24,12 @@ export class PostsState {
 
   setPosts(posts: Post[]): void {
     this.posts$.next(posts);
+  }
+
+  updateCommentsByPostId(postId: number, comments: Comment[]): void {
+    const posts = this.posts$.getValue();
+    const index = posts.findIndex((p) => (p.id = postId));
+    posts[index].comments = comments;
+    this.posts$.next([...posts]);
   }
 }

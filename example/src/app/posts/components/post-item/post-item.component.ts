@@ -1,21 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Post } from '../../models/post.model';
 
 @Component({
   selector: 'app-post-item',
   templateUrl: './post-item.component.html',
-  styleUrls: ['./post-item.component.scss']
+  styleUrls: ['./post-item.component.scss'],
 })
-export class PostItemComponent implements OnInit {
-
+export class PostItemComponent {
   @Input()
   post: Post;
 
-  showComments;
+  @Output()
+  commentsClick = new EventEmitter();
 
-  constructor() { }
+  showComments: boolean;
 
-  ngOnInit(): void {
+  onCommentsClicked(): void {
+    this.showComments = !this.showComments;
+    if (this.showComments) {
+      this.commentsClick.emit();
+    }
   }
-
 }
