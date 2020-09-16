@@ -1,0 +1,8 @@
+<div *ngIf="loading$ | async; else comments">Loading...</div>
+
+<ng-template #comments>
+  <app-comment-item
+    *ngFor="let comment of comments$ | async"
+    [comment]="comment"
+  ></app-comment-item>
+</ng-template>

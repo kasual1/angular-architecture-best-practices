@@ -1,0 +1,8 @@
+<div>
+  <h1>{{ post.title }}</h1>
+  <p>{{ post.body }}</p>
+  <a [routerLink]="" (click)="showComments = !showComments">Show Comments</a>
+  <div *ngIf="showComments">
+    <app-comments-list [postId]="post.id"></app-comments-list>
+  </div>
+</div>
