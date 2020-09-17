@@ -18,7 +18,7 @@ This repository discusses best practices in Angular architecture. The current ex
   - [Feature Modules](#sub-heading-1)
   - [Core Module](#sub-heading-1)
   - [Shared Module](#sub-heading-1)
-- [Monorepo and microfrontends](#heading-2)
+- [Monorepos and microfrontends](#heading-2)
 ## Introduction
 
 
