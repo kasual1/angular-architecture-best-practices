@@ -1,5 +1,5 @@
 import { User } from 'src/app/users/models/user.model';
-import { Comment } from '../models/comment.model';
+import { Comment } from '../../comments/models/comment.model';
 
 export interface Post {
   id: number;

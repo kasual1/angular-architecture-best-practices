@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { log } from 'console';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../../models/post.model';
 import { PostsFacade } from '../../posts.facade';

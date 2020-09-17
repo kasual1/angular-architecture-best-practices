@@ -4,9 +4,9 @@ import { map, shareReplay } from 'rxjs/operators';
 import { UserService } from '../users/services/user.service';
 import { UsersState } from '../users/state/users.state';
 import { Post } from './models/post.model';
-import { CommentService } from './services/comment.service';
+import { CommentService } from '../comments/services/comment.service';
 import { PostService } from './services/post.service';
-import { CommentsState } from './state/comments.state';
+import { CommentsState } from '../comments/containers/comments.state';
 import { PostsState } from './state/posts.state';
 
 @Injectable({
