@@ -1,4 +1,4 @@
-# Angular Architecture Best Practices
+# Angular Architecture - Best Practices
 
 This repository discusses best practices in Angular architecture. The current example includes concepts mentioned in the following blog posts:
 - https://angular-academy.com/angular-architecture-best-practices/
