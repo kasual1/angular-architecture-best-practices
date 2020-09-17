@@ -19,15 +19,4 @@ This repository discusses best practices in Angular architecture. The current ex
   - [Core Module](#sub-heading-1)
   - [Shared Module](#sub-heading-1)
 - [Monorepos and microfrontends](#heading-2)
-## Introduction
-
-
-# 
-### Installation
-
-```sh
-$ cd dillinger
-$ npm install -d
-$ node app
-```
 
