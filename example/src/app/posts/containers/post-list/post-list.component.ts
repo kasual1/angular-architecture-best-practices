@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../../models/post.model';
 import { PostsFacade } from '../../posts.facade';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-list',
@@ -15,6 +14,7 @@ export class PostListComponent implements OnInit {
 
   constructor(private postsFacade: PostsFacade) {
     this.posts$ = postsFacade.getPosts$();
+    this.loading$ = postsFacade.getLoading$();
   }
 
   ngOnInit(): void {

@@ -1,15 +1,6 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, from, merge, Observable } from 'rxjs';
-import {
-  concatMap,
-  flatMap,
-  map,
-  mergeAll,
-  mergeMap,
-  switchMap,
-  tap,
-  toArray,
-} from 'rxjs/operators';
+import { forkJoin, from, Observable } from 'rxjs';
+import { concatMap, map, switchMap, toArray } from 'rxjs/operators';
 import { Post } from './models/post.model';
 import { CommentService } from './services/comment.service';
 import { PostService } from './services/post.service';
