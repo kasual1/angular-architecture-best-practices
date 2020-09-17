@@ -12,6 +12,10 @@ export class CommentService {
 
   constructor(private http: HttpClient) {}
 
+  fetchComments(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(this.url);
+  }
+
   fetchCommentsByPostId(postId: number): Observable<Comment[]> {
     let params = new HttpParams();
     params = params.append('postId', postId.toString());

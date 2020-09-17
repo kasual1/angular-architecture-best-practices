@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, from, Observable } from 'rxjs';
-import { concatMap, map, switchMap, toArray } from 'rxjs/operators';
+import { combineLatest, forkJoin, Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { UserService } from '../users/services/user.service';
+import { UsersState } from '../users/state/users.state';
 import { Post } from './models/post.model';
 import { CommentService } from './services/comment.service';
 import { PostService } from './services/post.service';
+import { CommentsState } from './state/comments.state';
 import { PostsState } from './state/posts.state';
 
 @Injectable({
@@ -12,48 +15,49 @@ import { PostsState } from './state/posts.state';
 export class PostsFacade {
   constructor(
     private postState: PostsState,
+    private commentsState: CommentsState,
+    private usersState: UsersState,
     private postService: PostService,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private userService: UserService
   ) {}
 
   getLoading$(): Observable<boolean> {
     return this.postState.getLoading$();
   }
 
-  getPosts$(): Observable<Post[]> {
-    return this.postState.getPosts$();
+  getPostsWithCommentsAndUsers$(): Observable<Post[]> {
+    return combineLatest([
+      this.postState.getPosts$(),
+      this.commentsState.getComments$(),
+      this.usersState.getUsers$(),
+    ]).pipe(
+      map(([posts, comments, users]) => {
+        return posts.map((post) => {
+          return {
+            ...post,
+            comments: comments.filter((comment) => comment.postId === post.id),
+            user: users.find((user) => user.id === post.userId),
+          };
+        });
+      }),
+      shareReplay(1)
+    );
   }
 
-  loadAllPostsWithComments(): void {
+  loadPostsWithCommentsAndUsers(): void {
     this.postState.setLoading(true);
     const posts$ = this.postService.fetchPosts();
-    const comments$ = posts$.pipe(
-      switchMap((posts) => from(posts)),
-      concatMap((post) => this.commentService.fetchCommentsByPostId(post.id)),
-      toArray()
-    );
-    forkJoin([posts$, comments$])
-      .pipe(
-        map(([posts, comments]) =>
-          posts.map((post, index) => {
-            return {
-              ...post,
-              comments: comments[index],
-            };
-          })
-        )
-      )
-      .subscribe(
-        (posts) => this.postState.setPosts(posts),
-        (error) => console.error(error),
-        () => this.postState.setLoading(false)
-      );
-  }
-
-  loadCommentsByPostId(postId: number): void {
-    this.commentService.fetchCommentsByPostId(postId).subscribe(
-      (comments) => this.postState.updateCommentsByPostId(postId, comments),
-      (error) => console.error(error)
+    const comments$ = this.commentService.fetchComments();
+    const users$ = this.userService.fetchUsers();
+    forkJoin([posts$, comments$, users$]).subscribe(
+      ([posts, comments, users]) => {
+        this.postState.setPosts(posts);
+        this.commentsState.setComments(comments);
+        this.usersState.setUsers(users);
+      },
+      (error) => console.error(error),
+      () => this.postState.setLoading(false)
     );
   }
 }

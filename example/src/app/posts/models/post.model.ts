@@ -1,3 +1,4 @@
+import { User } from 'src/app/users/models/user.model';
 import { Comment } from '../models/comment.model';
 
 export interface Post {
@@ -6,4 +7,5 @@ export interface Post {
   title: string;
   body: string;
   comments?: Comment[];
+  user?: User;
 }

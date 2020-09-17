@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Post } from '../models/post.model';
-import { Comment } from '../models/comment.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PostsState {
+export class UsersState {
   private loading$ = new BehaviorSubject<boolean>(false);
-  private posts$ = new BehaviorSubject<Post[]>([]);
+  private users$ = new BehaviorSubject<User[]>([]);
 
   getLoading$(): Observable<boolean> {
     return this.loading$.asObservable();
@@ -18,11 +17,11 @@ export class PostsState {
     this.loading$.next(isLoading);
   }
 
-  getPosts$(): Observable<Post[]> {
-    return this.posts$.asObservable();
+  getUsers$(): Observable<User[]> {
+    return this.users$.asObservable();
   }
 
-  setPosts(posts: Post[]): void {
-    this.posts$.next(posts);
+  setUsers(users: User[]): void {
+    this.users$.next(users);
   }
 }
