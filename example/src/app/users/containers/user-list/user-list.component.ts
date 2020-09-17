@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UsersFacade } from '../../users.facade';
@@ -8,7 +8,7 @@ import { UsersFacade } from '../../users.facade';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
 
   users$: Observable<User[]>;
   loading$: Observable<boolean>;
