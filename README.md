@@ -6,8 +6,8 @@ This repository discusses best practices in Angular architecture. The current ex
 - https://netmedia.io/dev/angular-architecture-patterns-high-level-project-architecture_5589
 
 ## Table of contents
-- [Introduction](#heading)
-- [Layers of abstraction](#heading-1)
+- [Introduction](#introduction)
+- [Layers of abstraction](#layers-of-abstraction)
     - [Presentation layer](#sub-heading-1)
     - [Abstraction layer](#sub-heading-1)
     - [Core layer](#sub-heading-1)
