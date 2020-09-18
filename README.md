@@ -27,4 +27,4 @@ Do not consider those guidelines as strict rules, but rather as recommendations 
 
 The goal is to provide a **good source of architectural best practices** for everyone whether you are a beginner, intermediate or expert.
 
-*If you think good architecture is expensive, try bad architecture* --- Brian Foote and Joseph Yoder
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*"If you think good architecture is expensive, try bad architecture"* - Brian Foote and Joseph Yoder
