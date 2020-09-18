@@ -21,7 +21,7 @@ This repository discusses best practices in Angular architecture. The current ex
 - [Monorepo and microfrontends](#heading-2)
 
 ## Introduction
-While following architectural guidelines on Angular.io for small and medium sized applications works well, it seems like especially for large scale applications, tutorials and examples are missing. This repository tries to fill this gap by providing guidelines and examples of an architecture that is highly scalable and works well in the context of developing bussiness applications.
+While following architectural guidelines on Angular.io for small and medium sized applications works well, it seems like especially for large scale applications, tutorials and examples are missing. This repository tries to fill this gap by providing guidelines and examples of an architecture that is **highly scalable** and works well in the context of developing **bussiness applications**.
 
 Do not consider those guidelines as strict rules, but rather as recommendations that can make life easier. I see this repository as a **starting point**, that is open to discussions and I would love to invite the community to **constantly improve current examples** and share their real life experiences.
 
